@@ -1,0 +1,183 @@
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+            color: inherit;
+        }
+	.continer{
+		
+	}
+    .top_menu{
+		display: flex;
+		margin:30px 0 30px 0 ;
+	}
+	.top_menu > a{
+		margin-left: 100px;
+		font-size: 25px;
+		font-weight: bold;
+		color: black;
+	}
+	.menu{
+		display: flex;
+	}
+	.menu > li{
+		margin-left: 50px;
+		margin-top:5px;
+		font-size: 20px;
+	}
+	.menu > li > a{
+		color: black;
+		margin-left:40px;
+	}
+     .BI{
+		background-image: url("../img/closeup-image-office-phone.jpg");
+		background-position:center;
+		background-size:cover;
+		position:relative;
+		height: 350px;
+		width: auto;
+	}
+	.BI::before{
+		position:absolute;
+		content: "";
+		width:100%;
+		height:100%;
+	}
+    .BI > h2{
+        color: white;
+        font-size:60px;
+        text-align: center;
+        padding-top:100px;
+        position: relative;
+        z-index: 99;
+    }
+    .menu-1{
+        display: flex;
+    }
+    .menu-1> li{
+        margin-left:50px;
+        margin-top:10px;
+        font-size:20px;
+    }
+    .menu-1 > li > a{
+        color:black;
+    }
+    .board_wrap{
+        width: 1000px;
+        margin: 100px auto;
+    }
+    .board_title{
+        margin-bottom: 30px;
+    }
+    .board_title > strong{
+        font-size:30px;
+    }
+    .board_write{
+        width: 100%;
+        border-top: 2px solid #000;
+    }
+    .board_write .title,
+    .board_write .info{
+        padding:15px;
+    }
+    .board_write .info{
+        border-top:1px dashed #ddd;
+        border-bottom:1px solid #000;
+        font-size:0;
+    }
+    .board_write .title dl{
+        font-size:0;
+    }
+    .board_write .info dl{
+        display: inline-block;
+        width: 50%;
+        vertical-align: middle;
+    }
+    .board_write .cont{
+        border-bottom:1px solid #000;
+    }
+    .board_write .cont textarea{
+        display:block;
+        width:100%;
+        height:300px;
+        padding:15px;
+        box-sizing:border-box;
+        border:0;
+        resize: vertical;
+    }
+    .board_write .title dt,
+    .board_write .title dd,
+    .board_write .info dt,
+    .board_write .info dd{
+        display: inline-block;
+        vertical-align:middle;
+        font-size:1.2rem;
+    }
+    .board_write .title dt,
+    .board_write .info dt{
+        width:100px;
+    }
+    .board_write .title dd{
+        width: calc(100% - 100px);
+    }
+    .board_write .title input[type="text"]{
+        width:80%;
+        height: 30px;
+    }
+    .board_write .info input[type="text"]{
+        height: 30px;
+    }
+    .board_write input#review{
+    	width:100px;
+    	height:50px;
+    	margin-top:50px;
+    	margin-left:400px;
+    }
+    .bt_wrap{
+        margin-top:30px;
+        font-size:0px;
+        text-align: center;
+    }
+    .bt_wrap > a{
+        display: inline-block;
+        min-width: 80px;
+        padding: 10px;
+        margin-left:10px;
+        border: 1px solid #000;
+        border-radius: 2px;
+        font-size: 1rem;
+    }
+    
+    .bt_wrap > a:first-child{
+        margin-left:0;
+    }
+    .bt_wrap a.on{
+        background: #000;
+        color:#fff; 
+    }
+    .line{
+		margin-top: 50px;
+	}
+	.ff{
+		display:flex;
+		margin-bottom: 10px;
+	}
+	.ff > h2{
+		margin-left: 40px;
+	}
+	.link{
+		display:flex;
+		margin-left:40px;
+		margin-top:5px;
+	}
+	.link > a{
+		color: black;
+		margin-left:5px;
+	}

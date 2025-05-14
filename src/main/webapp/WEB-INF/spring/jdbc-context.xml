@@ -7,13 +7,24 @@
 		
 		   
      <!-- JDBC 데이터베이스 연결 설정 -->
-    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+      <!-- <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/review_project?useSSL=false&amp;serverTimezone=UTC"/>
         <property name="username" value="root"/>
         <property name="password" value="1234"/>
-    </bean>
-
+    </bean>  -->
+    
+     <!-- JDBC 데이터베이스 연결 설정 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <!-- EC2의 퍼블릭 IP 주소로 변경 -->
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+       <!--  MySQL URL 수정 (EC2 퍼블릭 IP 사용) -->
+        <property name="url" value="jdbc:mysql://3.37.88.236:3306/review_project?useSSL=false&amp;serverTimezone=UTC"/>
+        <!-- MySQL 사용자명과 비밀번호를 EC2에서 설정한 값으로 변경 -->
+        <property name="username" value="haeun_user"/>
+        <property name="password" value="haeun2025!@"/> <!-- 실제 비밀번호로 교체 -->
+    </bean> 
+ 
     
      <bean id = "jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 	 	<property name="dataSource" ref="dataSource"></property>

@@ -32,7 +32,7 @@
                 <strong>HaEun이사 이용후기</strong>
             </div>
             <div class="board_write_wrap">
-            <form action="/hhaeun/writeConfirm" method="POST">
+            <form action="/writeConfirm" method="POST">
                 <div class="board_write">
                     <div class="title">
                         <dl>

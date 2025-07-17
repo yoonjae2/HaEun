@@ -27,7 +27,6 @@ public class PageController {
 	@GetMapping(value = "/HM")
 	public String HM(){
 		String nextpage = "/HM";
-		
 		return nextpage;
 	}
 	
@@ -109,6 +108,11 @@ public class PageController {
 	@GetMapping(value = "/company")
 	public String company() {
 		String nextpage = "/company";
+		return nextpage;
+	}
+	@GetMapping(value = "/thankyou")
+	public String thankyou() {
+		String nextpage = "/thankyou";
 		return nextpage;
 	}
 }

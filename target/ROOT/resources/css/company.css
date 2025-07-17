@@ -1,0 +1,219 @@
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+            color: inherit;
+        }
+	.continer{
+		
+	}
+    .top_menu{
+		display: flex;
+		margin:30px 0 30px 0 ;
+	}
+	.top_menu > a{
+		margin-left: 100px;
+		font-size: 25px;
+		font-weight: bold;
+		color: black;
+	}
+	.menu{
+		display: flex;
+	}
+	.menu > li{
+		margin-left: 50px;
+		margin-top:5px;
+		font-size: 20px;
+	}
+	.menu > li > a{
+		color: black;
+		margin-left:40px;
+	}
+    .BI{
+		background-image: url("../img/closeup-image-office-phone.jpg");
+		background-position:center;
+		background-size:cover;
+		position:relative;
+		height: 350px;
+		width: auto;
+	}
+	.BI::before{
+		position:absolute;
+		content: "";
+		width:100%;
+		height:100%;
+	}
+    .BI > h2{
+        color: white;
+        font-size:60px;
+        text-align: center;
+        padding-top:100px;
+        position: relative;
+        z-index: 99;
+    }
+    .menu-1{
+        display: flex;
+    }
+    .menu-1> li{
+        margin-left:50px;
+        margin-top:10px;
+        font-size:20px;
+    }
+    .menu-1 > li > a{
+        color:black;
+    }
+    .ff{
+		display:flex;
+		margin-bottom: 10px;
+	}
+	.ff > h2{
+		margin-left: 40px;
+	}
+    .cp{
+    	
+    	margin-bottom: 20px;
+    	width: 60%;
+    	margin-left:40%;
+    }
+    .cp > h2{
+    	
+    }
+    .cp > .line{
+		border: 1px solid black;
+		width: 50%;
+		margin-top:10px;
+		
+    }
+    .cp-1{
+    	margin-bottom: 20px;
+    }
+    .cp-1 > h2{
+    	margin-top:20px;
+    	margin-bottom: 20px;
+    }
+    .cp-1 > p{
+    	
+    }
+    .cp-2 > li > span{
+    	display: inline-block;
+    	width: 130px;
+    }
+	.link{
+		display:flex;
+		margin-left:40px;
+		margin-top:5px;
+	}
+	.link > a{
+		color: black;
+		margin-left:5px;
+	}
+	/* 모바일 대응 스타일 */
+@media (max-width: 768px) {
+
+     .top_menu {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 20px 0;
+        /* display: flex;  => 빼서 자연스러운 블록 레이아웃으로 */
+    }
+
+    .top_menu > a {
+        margin-left: 0;
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 10px;
+    }
+     .menu {
+        flex-direction: column;
+        width: 100%;
+        padding-left: 0;
+        /* display: flex; => 빼기 */
+    }
+
+    /* 메뉴, 메뉴-1 모두 flex column으로 */
+    .menu,
+    .menu-1 {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-left: 0;
+    }
+    .menu > li,
+    .menu-1 > li {
+        margin-left: 0;
+        margin-top: 10px;
+        font-size: 18px;
+    }
+    .menu > li > a,
+    .menu-1 > li > a {
+        margin-left: 0;
+        color: black;
+    }
+
+     .BI {
+        width: 100% !important;
+        height: 300px;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        padding-left: 20px;
+        box-sizing: border-box;
+    }
+    .BI > h2,
+    .BI > p {
+        position: relative;
+        z-index: 2;
+        color: white;
+        padding-left: 20px;
+    }
+    .BI > h2 {
+        font-size: 30px;
+        padding-top: 100px;
+    }
+ 	.footer .ff {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 20px;
+    }
+    .footer .link {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    .cp {
+        width: 90%;
+        margin-left: 5%;
+        margin-bottom: 20px;
+        margin-top:20px;
+    }
+
+    .cp > .line {
+        width: 80%;
+        margin: 10px auto 0 auto;
+    }
+
+    .cp-1 > h2 {
+        font-size: 20px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .cp-1 {
+        padding: 0 10px;
+    }
+
+    .cp-2 > li > span {
+        width: 100px;
+        display: inline-block;
+        font-size: 14px;
+    }
+
+   
+}

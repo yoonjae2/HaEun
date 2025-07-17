@@ -6,6 +6,7 @@
 <head>
 	<title>Home</title>
 	<link href="<c:url value='/resources/css/company.css' />" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	    <div class="continer">
@@ -37,7 +38,7 @@
         		<p>20년 경력의 베테랑 기사님들이 신뢰와 정직을 바탕으로 성심성의껏 신경써서 잘해드리겠습니다.</p>
         	</div>
         	<ul class="cp-2">
-        		<li><span>회사명</span>: (주)HaEun이사</li>
+        		<li><span>회사명</span>: HaEun이사</li>
         		<li><span>대표</span>: 최찬영</li>
         		<li><span>설립일</span>: 2010년 6월 10일</li>
         		<li><span>주소</span>: 경기도 수원시 팔달구 인계동 842-7</li>
@@ -56,7 +57,7 @@
 				<a href=<c:url value='/CC' />>고객센터</a>
 			</div>
 		</div>
-			<p>(주)HaEun | 경기도 수원시 팔달구 인계동 842-7 | 대표 : 최찬영 | 전화번호 : 010-8033-5236<br>사업자등록번호 : 693-23-01809</p>
+			<p>HaEun | 경기도 수원시 팔달구 인계동 842-7 | 대표 : 최찬영 | 전화번호 : 010-8033-5236<br>사업자등록번호 : 693-23-01809</p>
 		</div>
     </div>
     

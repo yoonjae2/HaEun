@@ -7,6 +7,7 @@
 <head>
 	<title>Home</title>
 	<link href="<c:url value='/resources/css/view.css?v=2' />" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	    <div class="continer">
@@ -55,10 +56,8 @@
                 </div>
                 </div>
                 <div class="bt_wrap">
-                    <a href="/hhaeun/CC">목록으로 돌아가기</a>
-                    <!-- <a href="">수정</a> -->
-                    <!-- ✅ 관리자 삭제 버튼 -->
-  				<form id="deleteForm" action="/hhaeun/deleteReview.do" method="post" onsubmit="return checkAdminPassword();">
+                    <a href="/CC">목록으로 돌아가기</a>
+  				<form id="deleteForm" action="/deleteReview.do" method="post" onsubmit="return checkAdminPassword();">
     				<input type="hidden" name="reviewId" value="${review.id}" />
     				<button type="submit">삭제</button>
   				</form>
@@ -75,7 +74,7 @@
 				<a href=<c:url value='/CC' />>고객센터</a>
 			</div>
 		</div>
-			<p>(주)HaEun | 경기도 수원시 팔달구 인계동 842-7 | 대표 : 최찬영 | 전화번호 : 010-8033-5236<br>사업자등록번호 : 693-23-01809</p>
+			<p>HaEun | 경기도 수원시 팔달구 인계동 842-7 | 대표 : 최찬영 | 전화번호 : 010-8033-5236<br>사업자등록번호 : 693-23-01809</p>
 		</div>
     </div>
     

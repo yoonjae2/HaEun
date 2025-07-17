@@ -9,7 +9,8 @@
     <name>hhaeun</name>
     <packaging>war</packaging>
     <version>1.0.0-BUILD-SNAPSHOT</version>
-
+ 
+  
     <properties>
         <java-version>11</java-version>
         <org.springframework-version>5.2.9.RELEASE</org.springframework-version>
@@ -189,6 +190,8 @@
     </dependencies>
 
     <build>
+    	<finalName>ROOT</finalName>
+    
         <plugins>
             <!-- Eclipse plugin for Spring IDE support -->
             <plugin>

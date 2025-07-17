@@ -70,7 +70,7 @@
         color:black;
     }
     .board_wrap{
-        width: 1000px;
+    	width:960px;
         margin: 100px auto;
     }
     .board_title{
@@ -190,3 +190,87 @@
 		color: black;
 		margin-left:5px;
 	}
+	@media (max-width: 768px) {
+
+     .top_menu {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 20px 0;
+        /* display: flex;  => 빼서 자연스러운 블록 레이아웃으로 */
+    }
+
+    .top_menu > a {
+        margin-left: 0;
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+        margin-bottom: 10px;
+    }
+     .menu {
+        flex-direction: column;
+        width: 100%;
+        padding-left: 0;
+        /* display: flex; => 빼기 */
+    }
+
+    /* 메뉴, 메뉴-1 모두 flex column으로 */
+    .menu,
+    .menu-1 {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding-left: 0;
+    }
+    .menu > li,
+    .menu-1 > li {
+        margin-left: 0;
+        margin-top: 10px;
+        font-size: 18px;
+    }
+    .menu > li > a,
+    .menu-1 > li > a {
+        margin-left: 0;
+        color: black;
+    }
+
+     .BI {
+        width: 100% !important;
+        height: 300px;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        padding-left: 20px;
+        box-sizing: border-box;
+    }
+    .BI > h2,
+    .BI > p {
+        position: relative;
+        z-index: 2;
+        color: white;
+        padding-left: 20px;
+    }
+    .BI > h2 {
+        font-size: 30px;
+        padding-top: 100px;
+    }
+    .board_wrap{
+    	width:auto;
+    	margin:100px auto;
+    }
+     .board_list .title{
+        width:40%;
+        text-align:center;
+    }
+    .board_list .writer{
+        width:auto;
+    }
+ 	.footer .ff {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 20px;
+    }
+    .footer .link {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+	

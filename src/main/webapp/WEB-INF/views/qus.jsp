@@ -7,6 +7,7 @@
 	<title>Home</title>
 	<link href="<c:url value='/resources/css/qus.css' />" rel="stylesheet" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	<div class="continer">
@@ -87,9 +88,9 @@
 				<a href=<c:url value='/CC' />>고객센터</a>
 			</div>
 		</div>
-			<p>(주)HaEun | 경기도 수원시 팔달구 인계동 842-7 | 대표 : 최찬영 | 전화번호 : 010-8033-5236<br>사업자등록번호 : 693-23-01809</p>
+			<p>HaEun | 경기도 수원시 팔달구 인계동 842-7 | 대표 : 최찬영 | 전화번호 : 010-8033-5236<br>사업자등록번호 : 693-23-01809</p>
 		</div>
-
+		
 	</div>
 
 </body>

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <html>
 <head>
 	<title>Home</title>
 	<link href="<c:url value='/resources/css/write.css?v=1' />" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	    <div class="continer">
@@ -53,10 +53,6 @@
                 </div>
                 </form>
             </div>
-           <!--  <div class="bt_wrap">
-                <a href="#" class="on">등록</a>
-                <a href="#">취소</a>
-            </div> -->
             </div>
         <div class="line">
 			<hr style="border: 1px solid black;" width="100%" >
@@ -69,12 +65,9 @@
 				<a href=<c:url value='/CC' />>고객센터</a>
 			</div>
 		</div>
-			<p>(주)HaEun | 경기도 수원시 팔달구 인계동 842-7 | 대표 : 최찬영 | 전화번호 : 010-8033-5236<br>사업자등록번호 : 693-23-01809</p>
+			<p>HaEun | 경기도 수원시 팔달구 인계동 842-7 | 대표 : 최찬영 | 전화번호 : 010-8033-5236<br>사업자등록번호 : 693-23-01809</p>
 		</div>
     </div>
     
 </body>
-<script>
-
-</script>
 </html>

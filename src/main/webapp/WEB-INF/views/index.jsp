@@ -4,10 +4,12 @@
 
 <html>
 <head>
-	<title>Home</title>
+	<title>하은이사 - 신속하고 안전한 이사 서비스</title>
+	<meta name="description" content="신속하고 안전한 이사 서비스, 하은이사와 함께하세요.">
 	<link href="<c:url value='/resources/css/index.css' />" rel="stylesheet" type="text/css">
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	<div class="continer">
@@ -29,7 +31,7 @@
 		<form id="estimateForm" action="https://formsubmit.co/4c1bb991a576473f067a80034c00f145" method="post">
 		 <input type="hidden" name="_subject" value="🔔 새로운 이사 견적 신청이 도착했습니다!">
   		 <input type="hidden" name="_captcha" value="false">
- 		  <input type="hidden" name="_next" value="http://localhost:8080/hhaeun/"> <!-- 원하는 완료 페이지 주소로 수정 가능 -->
+ 		  <input type="hidden" name="_next" value="https://www.haeun24.com/thankyou"> <!-- 원하는 완료 페이지 주소로 수정 가능 -->
 		<div class="down-menu">
 			<p>서비스 종류</p>
 			<select name="이사종류" id="MH" class="Service" required>
@@ -74,7 +76,6 @@
 			</div>
 		</div>
 		</form>
-		<!-- <iframe name="hidden_iframe" style="display:none;"></iframe> -->
 
 		</div>
 		<div class="Middle">
@@ -140,15 +141,9 @@
 				<a href=<c:url value='/CC' />>고객센터</a>
 			</div>
 		</div>
-			<p>(주)HaEun | 경기도 수원시 팔달구 인계동 842-7 | 대표 : 최찬영 | 전화번호 : 010-8033-5236<br>사업자등록번호 : 693-23-01809</p>
+			<p>HaEun | 경기도 수원시 팔달구 인계동 842-7 | 대표 : 최찬영 | 전화번호 : 010-8033-5236<br>사업자등록번호 : 693-23-01809</p>
 		</div>
 
-	<!-- 팝업창 모달 -->
-<!-- <div id="popupBackdrop" style="display: none;"></div>
-  <div id="popupModal" style="display: none;">
-    <p>📬 견적 신청이 전송되었습니다!</p>
-    <button onclick="closePopup()">확인</button>x
-  </div> -->
 
 <script>
     function execDaumPostcode(type) {
@@ -196,30 +191,6 @@
  		 $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
 		});
 		
-		
-	
-		/* function handleSubmit(event) {
-			  event.preventDefault();
-			  const form = document.getElementById("estimateForm");
-
-			  // 폼 유효성 검사 통과 여부 확인
-			  if (form.checkValidity()) {
-			    showPopup(); // 통과 시 팝업 띄움
-			  } else {
-			    form.reportValidity(); // 통과 못하면 브라우저가 경고 보여줌
-			  }
-			}
-		function showPopup() {
-			  document.getElementById("popupBackdrop").style.display = "block";
-			  document.getElementById("popupModal").style.display = "block";
-			}
-
-			function closePopup() {
-			  document.getElementById("popupBackdrop").style.display = "none";
-			  document.getElementById("popupModal").style.display = "none";
-			  document.getElementById("estimateForm").submit(); // 실제 메일 전송!
-			} */
-
 
 	</script>
 

@@ -7,6 +7,7 @@
 	<title>Home</title>
 	<link href="<c:url value='/resources/css/HM.css' />" rel="stylesheet" type="text/css">
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	   <div class="continer">
@@ -28,7 +29,7 @@
 		<form id="estimateForm" action="https://formsubmit.co/4c1bb991a576473f067a80034c00f145" method="post">
 		 <input type="hidden" name="_subject" value="🔔 새로운 이사 견적 신청이 도착했습니다!">
   		 <input type="hidden" name="_captcha" value="false">
- 		  <input type="hidden" name="_next" value="http://localhost:8080/hhaeun/"> <!-- 원하는 완료 페이지 주소로 수정 가능 -->
+ 		  <input type="hidden" name="_next" value="https://www.haeun24.com/thankyou"> <!-- 원하는 완료 페이지 주소로 수정 가능 -->
 		<div class="down-menu">
 			<p>서비스 종류</p>
 			<select name="이사종류" id="MH" class="Service" required>
@@ -83,46 +84,49 @@
 				<a href=<c:url value='/CC' />>고객센터</a>
 			</div>
 		</div>
-			<p>(주)HaEun | 경기도 수원시 팔달구 인계동 842-7 | 대표 : 최찬영 | 전화번호 : 010-8033-5236<br>사업자등록번호 : 693-23-01809</p>
+			<p>HaEun | 경기도 수원시 팔달구 인계동 842-7 | 대표 : 최찬영 | 전화번호 : 010-8033-5236<br>사업자등록번호 : 693-23-01809</p>
 		</div>
         </div>
 </body>
 <script>
-	    function execDaumPostcode() {
-	        new daum.Postcode({
-	            oncomplete: function(data) {
-	                // 팝업을 통한 검색 결과 항목 클릭 시 실행
-	                var addr = ''; // 주소_결과값이 없을 경우 공백 
-	                var extraAddr = ''; // 참고항목
-	
-	                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-	                if (data.userSelectedType === 'R') { // 도로명 주소를 선택
-	                    addr = data.roadAddress;
-	                } else { // 지번 주소를 선택
-	                    addr = data.jibunAddress;
-	                }
-	
-	                if(data.userSelectedType === 'R'){
-	                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-	                        extraAddr += data.bname;
-	                    }
-	                    if(data.buildingName !== '' && data.apartment === 'Y'){
-	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-	                    }
-	                    if(extraAddr !== ''){
-	                        extraAddr = ' (' + extraAddr + ')';
-	                    }
-	                } else {
-	                    document.getElementById("UserAdd1").value = '';
-	                }
-	
-	                // 선택된 우편번호와 주소 정보를 input 박스에 넣는다.
-	                document.getElementById('zipp_code_id').value = data.zonecode;
-	                document.getElementById("UserAdd1").value = addr;
-	                document.getElementById("UserAdd1").value += extraAddr;
-	                document.getElementById("UserAdd2").focus(); // 우편번호 + 주소 입력이 완료되었음으로 상세주소로 포커스 이동
-	            }
-	        }).open();
-	    }
+function execDaumPostcode(type) {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            var addr = ''; // 주소_결과값이 없을 경우 공백 
+            var extraAddr = ''; // 참고항목
+
+            // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === 'R') { // 도로명 주소를 선택
+                addr = data.roadAddress;
+            } else { // 지번 주소를 선택
+                addr = data.jibunAddress;
+            }
+
+            if(data.userSelectedType === 'R'){
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraAddr += data.bname;
+                }
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                if(extraAddr !== ''){
+                    extraAddr = ' (' + extraAddr + ')';
+                }
+            }
+
+            // 출발지, 도착지에 따라 각기 다른 input에 값 넣기
+            if (type === 'start') {
+                document.getElementById('zipp_code_start').value = data.zonecode;
+                document.getElementById("UserAdd1_start").value = addr + extraAddr;
+                document.getElementById("UserAdd2_start").focus(); // 상세 주소 입력란으로 포커스 이동
+            } else if (type === 'end') {
+                document.getElementById('zipp_code_end').value = data.zonecode;
+                document.getElementById("UserAdd1_end").value = addr + extraAddr;
+                document.getElementById("UserAdd2_end").focus(); // 상세 주소 입력란으로 포커스 이동
+            }
+        }
+    }).open();
+}
+
 	    </script>
 </html>

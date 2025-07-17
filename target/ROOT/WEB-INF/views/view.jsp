@@ -57,8 +57,6 @@
                 </div>
                 <div class="bt_wrap">
                     <a href="/CC">목록으로 돌아가기</a>
-                    <!-- <a href="">수정</a> -->
-                    <!-- ✅ 관리자 삭제 버튼 -->
   				<form id="deleteForm" action="/deleteReview.do" method="post" onsubmit="return checkAdminPassword();">
     				<input type="hidden" name="reviewId" value="${review.id}" />
     				<button type="submit">삭제</button>

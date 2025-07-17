@@ -76,7 +76,6 @@
 			</div>
 		</div>
 		</form>
-		<!-- <iframe name="hidden_iframe" style="display:none;"></iframe> -->
 
 		</div>
 		<div class="Middle">
@@ -145,12 +144,6 @@
 			<p>HaEun | 경기도 수원시 팔달구 인계동 842-7 | 대표 : 최찬영 | 전화번호 : 010-8033-5236<br>사업자등록번호 : 693-23-01809</p>
 		</div>
 
-	<!-- 팝업창 모달 -->
-<!-- <div id="popupBackdrop" style="display: none;"></div>
-  <div id="popupModal" style="display: none;">
-    <p>📬 견적 신청이 전송되었습니다!</p>
-    <button onclick="closePopup()">확인</button>x
-  </div> -->
 
 <script>
     function execDaumPostcode(type) {
@@ -198,30 +191,6 @@
  		 $(this).next(".anw").siblings(".anw").slideUp(300); // 1개씩 펼치기
 		});
 		
-		
-	
-		/* function handleSubmit(event) {
-			  event.preventDefault();
-			  const form = document.getElementById("estimateForm");
-
-			  // 폼 유효성 검사 통과 여부 확인
-			  if (form.checkValidity()) {
-			    showPopup(); // 통과 시 팝업 띄움
-			  } else {
-			    form.reportValidity(); // 통과 못하면 브라우저가 경고 보여줌
-			  }
-			}
-		function showPopup() {
-			  document.getElementById("popupBackdrop").style.display = "block";
-			  document.getElementById("popupModal").style.display = "block";
-			}
-
-			function closePopup() {
-			  document.getElementById("popupBackdrop").style.display = "none";
-			  document.getElementById("popupModal").style.display = "none";
-			  document.getElementById("estimateForm").submit(); // 실제 메일 전송!
-			} */
-
 
 	</script>
 

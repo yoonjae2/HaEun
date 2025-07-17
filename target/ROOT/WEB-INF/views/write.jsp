@@ -53,10 +53,6 @@
                 </div>
                 </form>
             </div>
-           <!--  <div class="bt_wrap">
-                <a href="#" class="on">등록</a>
-                <a href="#">취소</a>
-            </div> -->
             </div>
         <div class="line">
 			<hr style="border: 1px solid black;" width="100%" >
@@ -74,7 +70,4 @@
     </div>
     
 </body>
-<script>
-
-</script>
 </html>

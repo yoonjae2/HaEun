@@ -1,22 +1,32 @@
 package com.office.hhaeun.page;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+@PropertySource("classpath:application.properties")
 @Controller
 public class PageController {
 	
 	@Autowired
 	private PageService pageService;
+	
+	@Value("${admin.password}")
+	private String adminPassword;
 	
 	 @RequestMapping("/")
 	    public String home() {
@@ -32,17 +42,17 @@ public class PageController {
 	
 	@GetMapping("/CC")
 	public String showReviewList(@RequestParam(value = "page", defaultValue = "1") int page, Model model) {
-	    int pageSize = 5; // ÆäÀÌÁö´ç ¸®ºä ¼ö
-	    int totalReviews = pageService.getTotalReviewCount(); // ÀüÃ¼ ¸®ºä °³¼ö
-	    int totalPages = (int) Math.ceil((double) totalReviews / pageSize); // ÀüÃ¼ ÆäÀÌÁö ¼ö °è»ê
+	    int pageSize = 5; // í˜ì´ì§€ë‹¹ ë¦¬ë·° ìˆ˜
+	    int totalReviews = pageService.getTotalReviewCount(); // ì „ì²´ ë¦¬ë·° ê°œìˆ˜
+	    int totalPages = (int) Math.ceil((double) totalReviews / pageSize); // ì „ì²´ í˜ì´ì§€ ìˆ˜ ê³„ì‚°
 
-	    List<PageVo> reviews = pageService.getReviewsByPage(page, pageSize); // ÇØ´ç ÆäÀÌÁöÀÇ ¸®ºä ¸ñ·Ï
+	    List<PageVo> reviews = pageService.getReviewsByPage(page, pageSize); // í•´ë‹¹ í˜ì´ì§€ì˜ ë¦¬ë·° ëª©ë¡
 
-	    model.addAttribute("reviews", reviews);  // ¸®ºä ¸ñ·Ï
-	    model.addAttribute("currentPage", page); // ÇöÀç ÆäÀÌÁö ¹øÈ£
-	    model.addAttribute("totalPages", totalPages); // ÀüÃ¼ ÆäÀÌÁö ¼ö
+	    model.addAttribute("reviews", reviews);  // ë¦¬ë·° ëª©ë¡
+	    model.addAttribute("currentPage", page); // í˜„ì¬ í˜ì´ì§€ ë²ˆí˜¸
+	    model.addAttribute("totalPages", totalPages); // ì „ì²´ í˜ì´ì§€ ìˆ˜
 
-	    return "CC";  // CC.jsp ¹İÈ¯
+	    return "CC";  // CC.jsp ë°˜í™˜
 	}
 
 	
@@ -58,49 +68,78 @@ public class PageController {
 		return nextpage;
 	}
 	
-	 // ¸®ºä »ó¼¼ ÆäÀÌÁö
+	 // ë¦¬ë·° ìƒì„¸ í˜ì´ì§€
 	@GetMapping("/view")
 	public String showReviewDetail(@RequestParam("title") String title, Model model) {
 	    System.out.println("Requested review title: " + title);
 
 	    if (title == null || title.isEmpty()) {
 	        System.out.println("Title is null or empty");
-	        return "redirect:/hhaeun/cc";
+	        return "redirect:/CC";
 	    }
 
 	    List<PageVo> reviewList = pageService.getReviewByTitle(title);
 
 	    if (!reviewList.isEmpty()) {
-	        PageVo review = reviewList.get(0); // °°Àº Á¦¸ñÀÌ ÀÖÀ» ¼ö ÀÖÀ¸´Ï Ã¹ ¹øÂ° °Í¸¸ »ç¿ë
+	        PageVo review = reviewList.get(0); // ê°™ì€ ì œëª©ì´ ìˆì„ ìˆ˜ ìˆìœ¼ë‹ˆ ì²« ë²ˆì§¸ ê²ƒë§Œ ì‚¬ìš©
 	        model.addAttribute("review", review);
 	        return "view"; // view.jsp
 	    } else {
-	        return "redirect:/hhaeun/cc"; // ¾øÀ¸¸é ¸ñ·ÏÀ¸·Î
+	        return "redirect:/CC"; // ì—†ìœ¼ë©´ ëª©ë¡ìœ¼ë¡œ
 	    }
 	}
 
-	  @PostMapping("/deleteReview.do")
-	    public String deleteReview(@RequestParam("reviewId") int reviewId) {
+	@PostMapping("/deleteReview.do")
+	@ResponseBody
+	public Map<String, Object> deleteReview(@RequestParam("reviewId") int reviewId) {
+	    Map<String, Object> response = new HashMap<>();
+	    try {
 	        pageService.deleteReviewById(reviewId);
-	        return "redirect:/CC"; // ¸ñ·ÏÀ¸·Î ¸®µğ·º¼Ç
+	        response.put("success", true);
+	        response.put("message", "ë¦¬ë·°ê°€ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
+	    } catch (Exception e) {
+	        response.put("success", false);
+	        response.put("message", "ì‚­ì œ ì¤‘ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
+	    }
+	    return response;
+	}
+
+
+
+	@PostMapping("/checkAdminPassword")
+	@ResponseBody
+	public Map<String, Object> checkPassword(@RequestBody Map<String, String> request) {
+	    String inputPassword = request.get("adminPassword");
+	    Map<String, Object> response = new HashMap<>();
+
+	    if (adminPassword.equals(inputPassword)) {
+	        response.put("success", true);
+	        response.put("message", "ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•©ë‹ˆë‹¤.");
+	    } else {
+	        response.put("success", false);
+	        response.put("message", "âŒ ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë ¸ìŠµë‹ˆë‹¤.");
 	    }
 
+	    return response;
+	}
+
+
 	
-	 // ¸®ºä ÀÛ¼º ÆäÀÌÁö
+	 // ë¦¬ë·° ì‘ì„± í˜ì´ì§€
     @GetMapping("/write")
     public String showWritePage() {
-        return "write";  // write.jsp ¹İÈ¯
+        return "write";  // write.jsp ë°˜í™˜
     }
     
     @PostMapping("/writeConfirm")
     public String writeConfirm(@ModelAttribute PageVo vo) {
-        // ÇöÀç ½Ã°£ ¼³Á¤
+        // í˜„ì¬ ì‹œê°„ ì„¤ì •
         vo.setDate(new Date());
 
-        // DB¿¡ ÀúÀå
+        // DBì— ì €ì¥
         pageService.writeReview(vo);
 
-        // ÀÛ¼º ÈÄ ¸ñ·Ï ÆäÀÌÁö·Î ¸®µğ·ºÆ®
+        // ì‘ì„± í›„ ëª©ë¡ í˜ì´ì§€ë¡œ ë¦¬ë””ë ‰íŠ¸
         return "redirect:/CC";
     }
 

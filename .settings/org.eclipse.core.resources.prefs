@@ -1,4 +1,8 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/office/hhaeun/page/PageController.java=UTF-8
+encoding//src/main/java/com/office/hhaeun/page/PageDao.java=UTF-8
+encoding//src/main/java/com/office/hhaeun/page/PageService.java=UTF-8
+encoding//src/main/java/com/office/hhaeun/page/PageVo.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/CC.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/HM.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/OF.jsp=UTF-8

@@ -10,10 +10,10 @@ public class PageVo {
 	    private String content;
 	    private Date date;
 
-	    // ±âº» »ý¼ºÀÚ
+	    // Â±Ã¢ÂºÂ» Â»Ã½Â¼ÂºÃ€Ãš
 	    public PageVo() {}
 	    
-	    // »ý¼ºÀÚ
+	    // Â»Ã½Â¼ÂºÃ€Ãš
 	    public PageVo(int id, String title, String author, String content, Date date) {
 	        this.id = id;
 	        this.title = title;
@@ -23,7 +23,7 @@ public class PageVo {
 	    }
 	    
 
-	    // Getter ¹× Setter
+	    // Getter Â¹Ã— Setter
 	    public int getId() {
 	        return id;
 	    }

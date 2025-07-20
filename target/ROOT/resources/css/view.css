@@ -191,7 +191,7 @@
         flex-direction: column;
         align-items: flex-start;
         margin: 20px 0;
-        /* display: flex;  => »©¼­ ÀÚ¿¬½º·¯¿î ºí·Ï ·¹ÀÌ¾Æ¿ôÀ¸·Î */
+        /* display: flex;  => ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¾Æ¿ï¿½ï¿½ï¿½ï¿½ï¿½ */
     }
 
     .top_menu > a {
@@ -205,10 +205,10 @@
         flex-direction: column;
         width: 100%;
         padding-left: 0;
-        /* display: flex; => »©±â */
+        /* display: flex; => ï¿½ï¿½ï¿½ï¿½ */
     }
 
-    /* ¸Þ´º, ¸Þ´º-1 ¸ðµÎ flex columnÀ¸·Î */
+    /* ï¿½Þ´ï¿½, ï¿½Þ´ï¿½-1 ï¿½ï¿½ï¿½ flex columnï¿½ï¿½ï¿½ï¿½ */
     .menu,
     .menu-1 {
         display: flex;

@@ -15,7 +15,7 @@ public class PageDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    // ¸®ºä ¸ñ·Ï ÆäÀÌÂ¡ Ã³¸®
+    // ë¦¬ë·° ëª©ë¡ í˜ì´ì§• ì²˜ë¦¬
     public List<PageVo> getReviewsByPage(int page, int pageSize) {
         int offset = (page - 1) * pageSize;
         String sql = "SELECT * FROM reviews ORDER BY date DESC LIMIT ? OFFSET ?";
@@ -34,7 +34,7 @@ public class PageDao {
         });
     }
     
-    // Á¦¸ñÀ¸·Î ¸®ºä Ã£±â (¿©·¯ °³ÀÇ °á°ú¸¦ ¹İÈ¯ÇÒ ¼ö ÀÖµµ·Ï List·Î ¼öÁ¤)
+    // ì œëª©ìœ¼ë¡œ ë¦¬ë·° ì°¾ê¸° (ì—¬ëŸ¬ ê°œì˜ ê²°ê³¼ë¥¼ ë°˜í™˜í•  ìˆ˜ ìˆë„ë¡ Listë¡œ ìˆ˜ì •)
     public List<PageVo> findByTitle(String title) {
         String sql = "SELECT * FROM reviews WHERE title = ?";
         return jdbcTemplate.query(sql, new Object[]{title}, new RowMapper<PageVo>() {
@@ -51,19 +51,37 @@ public class PageDao {
         });
     }
     
-    // ¸®ºä »ğÀÔ ¸Ş¼­µå
+    // ë¦¬ë·° ì‚½ì… ë©”ì„œë“œ
     public void insertReview(PageVo vo) {
         String sql = "INSERT INTO reviews (title, author, content, date) VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(sql, vo.getTitle(), vo.getAuthor(), vo.getContent(), vo.getDate());
     }
 
-    // ÀüÃ¼ ¸®ºä °³¼ö °¡Á®¿À±â
+    // ì „ì²´ ë¦¬ë·° ê°œìˆ˜ ê°€ì ¸ì˜¤ê¸°
     public int getTotalReviewCount() {
         String sql = "SELECT COUNT(*) FROM reviews";
-        return jdbcTemplate.queryForObject(sql, Integer.class); // ÀüÃ¼ ¸®ºä °³¼ö ¹İÈ¯
+        return jdbcTemplate.queryForObject(sql, Integer.class); // ì „ì²´ ë¦¬ë·° ê°œìˆ˜ ë°˜í™˜
     }
     public void deleteReview(int reviewId) {
         String sql = "DELETE FROM reviews WHERE id = ?";
         jdbcTemplate.update(sql, reviewId);
     }
+    
+    public PageVo getReviewById(int id) {
+        String sql = "SELECT * FROM reviews WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{id}, new RowMapper<PageVo>() {
+            @Override
+            public PageVo mapRow(ResultSet rs, int rowNum) throws SQLException {
+                PageVo vo = new PageVo();
+                vo.setId(rs.getInt("id"));
+                vo.setTitle(rs.getString("title"));
+                vo.setAuthor(rs.getString("author"));
+                vo.setContent(rs.getString("content"));
+                vo.setDate(rs.getTimestamp("date"));
+                return vo;
+            }
+        });
+    }
+
+
 }

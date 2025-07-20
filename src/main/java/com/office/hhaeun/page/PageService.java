@@ -12,23 +12,30 @@ public class PageService {
     private PageDao pageDao;
 
     public void writeReview(PageVo vo) {
-        pageDao.insertReview(vo); // ¸®ºä Ãß°¡
+        pageDao.insertReview(vo); // ë¦¬ë·° ì¶”ê°€
     }
 
     public List<PageVo> getReviewsByPage(int page, int pageSize) {
-        return pageDao.getReviewsByPage(page, pageSize); // ÆäÀÌÂ¡µÈ ¸®ºä ¸ñ·Ï ¹İÈ¯
+        return pageDao.getReviewsByPage(page, pageSize); // í˜ì´ì§•ëœ ë¦¬ë·° ëª©ë¡ ë°˜í™˜
     }
 
     public int getTotalReviewCount() {
-        return pageDao.getTotalReviewCount(); // ÃÑ ¸®ºä ¼ö ¹İÈ¯
+        return pageDao.getTotalReviewCount(); // ì´ ë¦¬ë·° ìˆ˜ ë°˜í™˜
     }
 
     public List<PageVo> getReviewByTitle(String title) {
-        return pageDao.findByTitle(title); // Á¦¸ñÀ¸·Î ¸®ºäµé Ã£±â
+        return pageDao.findByTitle(title); // ì œëª©ìœ¼ë¡œ ë¦¬ë·°ë“¤ ì°¾ê¸°
     }
     
     public void deleteReviewById(int reviewId) {
         pageDao.deleteReview(reviewId);
     }
+
+    public PageVo getReviewById(int reviewId) {
+        return pageDao.getReviewById(reviewId);
+    }
+
+
+
 
 }

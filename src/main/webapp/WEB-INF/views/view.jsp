@@ -8,6 +8,7 @@
 	<title>Home</title>
 	<link href="<c:url value='/resources/css/view.css?v=2' />" rel="stylesheet" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
 <body>
 	    <div class="continer">
@@ -57,10 +58,11 @@
                 </div>
                 <div class="bt_wrap">
                     <a href="/CC">목록으로 돌아가기</a>
-  				<form id="deleteForm" action="/deleteReview.do" method="post" onsubmit="return checkAdminPassword();">
-    				<input type="hidden" name="reviewId" value="${review.id}" />
-    				<button type="submit">삭제</button>
-  				</form>
+  				<form id="deleteForm" action="${pageContext.request.contextPath}/deleteReview.do" method="post">
+  				<input type="hidden" name="reviewId" value="${review.id}" />
+  				<input type="hidden" name="adminPassword" id="adminPassword" />
+  				<button type="button" onclick="submitWithPassword(${review.id})">삭제</button>
+				</form>
                 </div>
             </div>
         <div class="line">
@@ -77,12 +79,55 @@
 			<p>HaEun | 경기도 수원시 팔달구 인계동 842-7 | 대표 : 최찬영 | 전화번호 : 010-8033-5236<br>사업자등록번호 : 693-23-01809</p>
 		</div>
     </div>
+    <c:if test="${not empty error}">
+  	<script>
+    	alert("${error}");
+  	</script>
+	</c:if>
     
    <script>
-   function checkAdminPassword() {
-	    const pw = prompt("관리자 비밀번호를 입력하세요:");
-	    return pw === "move1234!" || (alert("❌ 비밀번호가 틀렸습니다."), false);
-	  }
+   function submitWithPassword(reviewId) {
+	   function askPassword() {
+	     const pw = prompt("관리자 비밀번호를 입력하세요:");
+	     if (pw === null) return;
+
+	     fetch('${pageContext.request.contextPath}/checkAdminPassword', {
+	       method: 'POST',
+	       headers: {
+	         'Content-Type': 'application/json'
+	       },
+	       body: JSON.stringify({ adminPassword: pw })
+	     })
+	     .then(res => res.json())
+	     .then(data => {
+	       if (data.success) {
+	         fetch('${pageContext.request.contextPath}/deleteReview.do?reviewId=' + encodeURIComponent(reviewId), {
+	           method: 'POST'
+	         })
+	         .then(res => res.json())
+	         .then(delData => {
+	           alert(delData.message);
+	           if (delData.success) window.location.href = '/CC';
+	         })
+	         .catch(() => {
+	           alert('삭제 중 오류가 발생했습니다.');
+	         });
+	       } else {
+	         alert("❌ 비밀번호가 틀렸습니다.");
+	         askPassword(); // 다시 시도
+	       }
+	     })
+	     .catch((e) => {
+	       console.error('에러 발생:', e);
+	       alert("⚠️ 서버와의 통신 중 오류가 발생했습니다.");  // 실제 오류만 catch
+	     });
+	   }
+
+	   askPassword();
+	 }
+
+
+
 </script>   
 </body>
 </html>
